@@ -1,17 +1,27 @@
 <template>
-  <div class="home">
-    <img src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="d-flex flex-1">
+    <card-list class="d-flex flex-1"/>
+    <pagination/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import store from '@/store';
+import { mapActions, mapState } from 'vuex';
+import { Pagination, CardList }from '@/components';
+
 export default {
-  name: "home",
-  components: {
-    HelloWorld,
+  components: { Pagination, CardList },
+  methods: {
+    ...mapActions('character', ['getCharacterList'])
   },
+  computed: {
+    ...mapState('character', ['characterList'])
+  },
+  async created() {
+    store.commit("setIsLoading", true)
+    await this.getCharacterList(1)
+    store.commit("setIsLoading", false)
+  }
 };
 </script>
