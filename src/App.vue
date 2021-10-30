@@ -1,35 +1,21 @@
 <template>
-  <Header/>
-  <div class="container d-flex flex-1">
+  <div>
     <router-view />
   </div>
 </template>
 
-<script>
-import { Header } from '@/components'
-
-export default {
-  components: { Header}
-}
-</script>
-
-
 <style lang="scss">
 
-//variables
-
+//default
 body {
   margin: 0
 }
 
+//variables
 :root{
   //colors
   --clr-green: 107, 254, 68;
   --clr-black: 27, 32, 26;
-}
-
-.container{
-  background: blue
 }
 
 #app {
@@ -37,6 +23,7 @@ body {
   min-height: 100vh;
   background-image: url('./assets/background.png');
   background-position: 50% 50%;
+  background-size: 100%, 100%;
   display: flex;
   flex-direction: column;
 }

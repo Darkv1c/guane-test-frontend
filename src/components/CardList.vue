@@ -1,19 +1,33 @@
 <template lang="">
-    <div v-for="(character, n) of characterList" v-bind:key="'card'+n">
-        <Card :object="character"/>
+    <div class="card-list-container d-flex">
+        <Card :object="character" v-for="(character, n) of results" 
+            v-bind:key="'card'+n" />
     </div>
 </template>
 <script>
 import { mapState } from 'vuex'
-import { Card } from './Card.vue'
+import { Card } from '@/components'
 
 export default {
-    components: {Card},
-    methods: {
-        ...mapState('character', ['characterList'])
+    components: { Card },
+    computed: {
+        ...mapState('character', ['characterList']),
+        ...mapState(['currentPage']),
+        results(){
+            return this.currentPage % 2 ? this.characterList.results.slice(0, 10) : 
+            this.characterList.results.slice(10, 20)
+        }
     }
 }
 </script>
-<style lang="">
-    
+<style lang="scss">
+    .card-list-container{
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        width: 100%;
+        box-sizing: border-box;
+        max-height: 40vh;
+        overflow-y: scroll;
+        justify-content: center;
+    }
 </style>
