@@ -1,6 +1,6 @@
 <template lang="">
     <div :class="'card-container c-pointer'"
-        @mouseover="()=>setShowText(true)" @mouseleave="()=>setShowText(false)">
+        @mouseover="()=>setShowText(true)" @mouseleave="()=>setShowText(false)" @click="goToDetails">
         <div :class="'card-sub-container neon-text card-sub-container-' + identifier" :style="`background-image: url('${object.image}')`">
             <div v-show="showText" class="card-text-container d-flex">
                 <span>Name: {{object.name}}</span>
@@ -11,6 +11,8 @@
     </div>
 </template>
 <script>
+import {mapMutations} from 'vuex'
+
 export default {
     data() {
         return {
@@ -25,9 +27,14 @@ export default {
         identifier: Number
     },
     methods: {
+        ...mapMutations('character', ['setCurrentCharacter']),
         setShowText(show) {
             clearTimeout(this.showTextFunction)
             this.showTextFunction = setTimeout(() => { this.showText = show }, 230);    
+        },
+        goToDetails(){
+            this.setCurrentCharacter(this.object)
+            this.$router.push('/character/' + this.object.id)
         }
     }
 }

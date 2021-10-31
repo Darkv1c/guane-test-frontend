@@ -31,6 +31,14 @@ export const character = {
                 commit('setCharacterList', [])
                 console.log(error)
             })
+        },
+        async getCharacter( {commit}:{commit:Commit}, id:number ) {
+            await axios.get('/' + id)
+            .then(response => commit('setCurrentCharacter', response.data))
+            .catch(error => {
+                commit('setCurrentCharacter', {})
+                console.log(error)
+            })
         }
     }
 }
