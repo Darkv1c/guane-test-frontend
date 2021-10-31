@@ -1,10 +1,10 @@
 <template lang="">
-    <div :class="'card-container-' + identifier + ' c-pointer'"
+    <div :class="'card-container c-pointer'"
         @mouseover="()=>setShowText(true)" @mouseleave="()=>setShowText(false)">
-        <div :class="'card-sub-container'" :style="`background-image: url('${object.image}')`">
-            <div v-if="showText" class="card-text-container">
+        <div :class="'card-sub-container card-sub-container-' + identifier" :style="`background-image: url('${object.image}')`">
+            <div v-if="showText" class="card-text-container d-flex">
                 <span>Name: {{object.name}}</span>
-                <span> </span>
+                <span>Species: {{object.species}} </span>
                 <span></span>
                 <span></span>
             </div>
@@ -28,39 +28,39 @@ export default {
     methods: {
         setShowText(show) {
             clearTimeout(this.showTextFunction)
-            this.showTextFunction = setTimeout(() => { this.showText = show }, 250);            
+            this.showTextFunction = setTimeout(() => { this.showText = show }, 250);    
         }
     }
 }
 </script>
 <style lang="scss">
-    @for $i from 0 to 10 {
-        .card-container-#{$i}{
-            max-width: 250px;
-            min-width: 150px;
+    .card-container{
+        max-width: 250px;
+        min-width: 150px;
+        border-radius: 40px;
+        margin: 12px;
+        aspect-ratio: 1/1;
+        flex: 0 1 25%;
+        .card-sub-container{
+            background-size: cover;
+            transition: all .5s ease-in-out 0s;
+            min-width: 100%;
+            min-height: 100%;
             border-radius: 40px;
-            margin: 12px;
-            aspect-ratio: 1/1;
-            flex: 0 1 25%;
-            .card-sub-container{
-                background-size: cover;
-                transition: all .5s ease-in-out 0s;
+            position: relative  ;
+            .card-text-container{
+                background-color: rgba(antiquewhite, .5);
                 min-width: 100%;
                 min-height: 100%;
                 border-radius: 40px;
-                position: relative  ;
-                .card-text-container{
-                    background-color: rgba(antiquewhite, .5);
-                    min-width: 100%;
-                    min-height: 100%;
-                    border-radius: 40px;
-                    position: absolute;
-                    transform: rotatey(180deg);
-                    box-sizing: border-box;
-                    padding: 10%;
-                }
+                position: absolute;
+                transform: rotatey(180deg);
+                box-sizing: border-box;
+                padding: 10%;
             }
-            &:hover > .card-sub-container {
+        }
+        @for $i from 0 to 10 {
+            &:hover > .card-sub-container-#{$i} {
                 transform: rotatey(180deg);
                 transition: all .5s ease-in-out 0s;
             }
