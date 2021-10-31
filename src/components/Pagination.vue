@@ -1,9 +1,9 @@
 <template >
     <div class="pagination-container">
-        <span @click="goToPreviousBlock"> back </span>
-        <span v-for="(page, n) of paginationArray" v-bind:key="'pagination' + n" @click="() => goToPage(maxPerView * block + n + 1)"
-            class="c-pointer">
-            {{maxPerView * block + n + 1}} &nbsp;
+        <span v-if="block" @click="goToPreviousBlock"> back </span>
+        <span v-for="(page, n) of paginationArray" v-bind:key="'pagination' + n"
+            @click="() => goToPage(maxPerView * block + n + 1)" class="c-pointer pag-index">
+            {{maxPerView * block + n + 1}}
         </span>
         <span @click="goToNextBlock" > foward </span>
     </div>
@@ -52,14 +52,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    div {
+    .pagination-container {
         background: white;
         opacity: 0.5;
         height: 80px;
-    }
-    .pagination-container {
         display: flex;
         font-size: 25px;
         justify-content: center;
+        .pag-index{
+            padding: 3px;
+            margin: 0px 3px;
+        }
     }
 </style>
