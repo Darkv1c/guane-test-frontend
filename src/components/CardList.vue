@@ -1,18 +1,19 @@
 <template lang="">
-    <div class="card-list-container d-flex">
-        <Card :object="character" v-for="(character, n) of results" 
+    <div v-if="!isLoading" class="card-list-container d-flex">
+        <Card  :object="character" v-for="(character, n) of results" 
             v-bind:key="'card'+n" :identifier="n"/>
     </div>
+    <Loading v-else />
 </template>
 <script>
 import { mapState } from 'vuex'
-import { Card } from '@/components'
+import { Card, Loading } from '@/components'
 
 export default {
-    components: { Card },
+    components: { Card, Loading },
     computed: {
         ...mapState('character', ['characterList']),
-        ...mapState(['currentPage']),
+        ...mapState(['currentPage', 'isLoading']),
         results(){
             if (this.characterList.results){
                 return this.currentPage % 2 ? this.characterList.results.slice(0, 10) : 
