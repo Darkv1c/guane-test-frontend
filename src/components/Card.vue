@@ -15,7 +15,8 @@
 export default {
     data() {
         return {
-            showText: false
+            showText: false,
+            showTextFunction: null
         }
     },
     props: {
@@ -26,7 +27,8 @@ export default {
     },
     methods: {
         setShowText(show) {
-            setTimeout(() => { this.showText = show }, 250);            
+            clearTimeout(this.showTextFunction)
+            this.showTextFunction = setTimeout(() => { this.showText = show }, 250);            
         }
     }
 }
@@ -46,7 +48,7 @@ export default {
                 min-width: 100%;
                 min-height: 100%;
                 border-radius: 40px;
-                position: relative;
+                position: relative  ;
                 .card-text-container{
                     background-color: rgba(antiquewhite, .5);
                     min-width: 100%;
@@ -54,6 +56,8 @@ export default {
                     border-radius: 40px;
                     position: absolute;
                     transform: rotatey(180deg);
+                    box-sizing: border-box;
+                    padding: 10%;
                 }
             }
             &:hover > .card-sub-container {
