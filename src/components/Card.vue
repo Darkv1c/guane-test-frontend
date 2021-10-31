@@ -1,12 +1,11 @@
 <template lang="">
     <div :class="'card-container c-pointer'"
         @mouseover="()=>setShowText(true)" @mouseleave="()=>setShowText(false)">
-        <div :class="'card-sub-container card-sub-container-' + identifier" :style="`background-image: url('${object.image}')`">
-            <div v-if="showText" class="card-text-container d-flex">
+        <div :class="'card-sub-container neon-text card-sub-container-' + identifier" :style="`background-image: url('${object.image}')`">
+            <div v-show="showText" class="card-text-container d-flex">
                 <span>Name: {{object.name}}</span>
                 <span>Species: {{object.species}} </span>
-                <span></span>
-                <span></span>
+                <span>Status: {{object.status}}</span>
             </div>
         </div>
     </div>
@@ -28,7 +27,7 @@ export default {
     methods: {
         setShowText(show) {
             clearTimeout(this.showTextFunction)
-            this.showTextFunction = setTimeout(() => { this.showText = show }, 250);    
+            this.showTextFunction = setTimeout(() => { this.showText = show }, 230);    
         }
     }
 }
@@ -49,7 +48,8 @@ export default {
             border-radius: 40px;
             position: relative  ;
             .card-text-container{
-                background-color: rgba(antiquewhite, .5);
+                background: linear-gradient(to bottom, rgba(var(--clr-black), .8), rgba(var(--clr-black), .5), rgba(var(--clr-black), .8), 
+                rgba(var(--clr-black), .5), rgba(var(--clr-black), .8), rgba(var(--clr-black), .5));
                 min-width: 100%;
                 min-height: 100%;
                 border-radius: 40px;
@@ -57,6 +57,11 @@ export default {
                 transform: rotatey(180deg);
                 box-sizing: border-box;
                 padding: 10%;
+                animation: gradientChange;
+                animation-delay: 0;
+                animation-duration: .25s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
             }
         }
         @for $i from 0 to 10 {
@@ -64,6 +69,21 @@ export default {
                 transform: rotatey(180deg);
                 transition: all .5s ease-in-out 0s;
             }
+        }
+    }
+
+    @keyframes gradientChange {
+        $i: 0;
+        $base: 0.6;
+        $range: 0.3;
+        
+        @while $i <= 1  {
+            #{$i*100 + "%"} {
+                background: repeating-linear-gradient(to bottom, rgba(var(--clr-black), $base + ($range * $i)), 
+                rgba(var(--clr-black), $base + ($range -  $range * $i)), rgba(var(--clr-black), $base + ($range * $i)), 
+                rgba(var(--clr-black), $base + ($range -  $range * $i)) 5%);
+            }
+            $i: $i + 0.01
         }
     }
 </style>

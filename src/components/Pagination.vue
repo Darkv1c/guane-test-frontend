@@ -1,11 +1,11 @@
 <template >
-    <div class="pagination-container">
-        <span v-if="block" @click="goToPreviousBlock"> back </span>
+    <div class="pagination-container neon-text">
+        <span v-if="block" @click="goToPreviousBlock" class="pag-index"> back </span>
         <span v-for="(page, n) of paginationArray" v-bind:key="'pagination' + n"
             @click="() => goToPage(maxPerView * block + n + 1)" class="c-pointer pag-index">
             {{maxPerView * block + n + 1}}
         </span>
-        <span @click="goToNextBlock" > foward </span>
+        <span @click="goToNextBlock" class="pag-index"> foward </span>
     </div>
 </template>
 <script>
@@ -52,13 +52,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    .pagination-container {
-        background: white;
-        opacity: 0.5;
-        height: 80px;
+    .pagination-container {        
+        background: rgba(var(--clr-black), 0.8);
+        font-weight: 800;
+        font-size: 30opx;
+        font-family: 'Courier New', Courier, monospace;
+        height: 100px;
         display: flex;
         font-size: 25px;
         justify-content: center;
+        box-sizing: border-box;
+        padding: 10px;
         .pag-index{
             padding: 3px;
             margin: 0px 3px;

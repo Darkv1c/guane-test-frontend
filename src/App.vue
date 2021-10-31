@@ -5,10 +5,14 @@
 </template>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 //default
 body {
-  margin: 0
+  margin: 0;
+  font-family: 'Indie Flower', cursive;
+  color: rgb(var(--clr-black));
+  font-weight: 600;
 }
 
 //variables
@@ -28,6 +32,7 @@ body {
   flex-direction: column;
 }
 
+//common classes
 .d-flex{
   display: flex;
   flex-direction: column;
@@ -39,6 +44,11 @@ body {
 
 .c-pointer{
   cursor: pointer;
+}
+
+.neon-text{  
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgb(var(--clr-green));
 }
 
 </style>
