@@ -35,7 +35,9 @@ export default {
 <style lang="scss">
     .card-container{
         max-width: 250px;
+        max-height: 250px;
         min-width: 150px;
+        min-height: 150px;
         border-radius: 40px;
         margin: 12px;
         aspect-ratio: 1/1;
