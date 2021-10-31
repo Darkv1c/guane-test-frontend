@@ -1,7 +1,7 @@
 <template lang="">
     <div class="card-list-container d-flex">
         <Card :object="character" v-for="(character, n) of results" 
-            v-bind:key="'card'+n" />
+            v-bind:key="'card'+n" :identifier="n"/>
     </div>
 </template>
 <script>
