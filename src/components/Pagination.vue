@@ -1,11 +1,11 @@
 <template >
     <div class="pagination-container neon-text">
-        <span v-if="block" @click="goToPreviousBlock" class="pag-index"> back </span>
-        <span v-for="(page, n) of paginationArray" v-bind:key="'pagination' + n"
+        <span v-if="block" @click="goToPreviousBlock" class="pag-index c-pointer"> back </span>
+        <span v-for="(page, n) of paginationArray" v-bind:key="'pagination' + (maxPerView * block + n + 1)"
             @click="() => goToPage(maxPerView * block + n + 1)" class="c-pointer pag-index">
             {{maxPerView * block + n + 1}}
         </span>
-        <span @click="goToNextBlock" class="pag-index"> foward </span>
+        <span @click="goToNextBlock" class="pag-index c-pointer"> foward </span>
     </div>
 </template>
 <script>
@@ -63,9 +63,41 @@ export default {
         justify-content: center;
         box-sizing: border-box;
         padding: 10px;
+        max-width: 100vw;
+        overflow: hidden;
         .pag-index{
             padding: 3px;
             margin: 0px 3px;
+            animation-name: distortion;
+            animation-duration: .1s;
+            animation-delay: 0;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    @keyframes distortion {
+        0% {
+            transform: skew(90deg, 90deg);
+            -webkit-text-stroke: 1.5px rgb(var(--clr-green));
+        }
+        25%{
+            transform: skew(0deg, 0deg);
+            color: lightskyblue;
+            -webkit-text-stroke: 1.5px violet;
+        }
+        50% {
+            transform: skew(-90deg, -90deg);
+            color: lightskyblue;
+            -webkit-text-stroke: 1.5px rgb(var(--clr-green));
+        }
+        75%{
+            transform: skew(10deg, 10deg);
+            color: lightskyblue;
+            -webkit-text-stroke: 1.5px violet;
+        }
+        100%{
+            transform: skew(0deg);
+            -webkit-text-stroke: 1.5px rgb(var(--clr-green));
         }
     }
 </style>
