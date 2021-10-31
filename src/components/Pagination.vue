@@ -1,11 +1,11 @@
 <template >
     <div class="pagination-container neon-text">
-        <span v-if="block" @click="goToPreviousBlock" class="pag-index c-pointer"> back </span>
+        <span v-if="block" @click="goToPreviousBlock" class="pag-index c-pointer"> Prev </span>
         <span v-for="(page, n) of paginationArray" v-bind:key="'pagination' + (maxPerView * block + n + 1)"
             @click="() => goToPage(maxPerView * block + n + 1)" class="c-pointer pag-index">
-            {{maxPerView * block + n + 1}}
+            <span v-if="(maxPerView * block + n + 1) <= lastIndex">{{maxPerView * block + n + 1}}</span>
         </span>
-        <span @click="goToNextBlock" class="pag-index c-pointer"> foward </span>
+        <span v-if="!isLastBlock" @click="goToNextBlock" class="pag-index c-pointer"> Next </span>
     </div>
 </template>
 <script>
@@ -16,10 +16,10 @@ export default {
         }
     },
     props: {
-        /** Total of pages */
-        pages: {type: Number, default: 0 },
         /** Range of page visible in the paginator */
-        maxPerView: {type: Number, default: 5 }
+        maxPerView: {type: Number, default: 5 },
+        /** Last page avaliable */
+        lastIndex: {type: Number, default: 100}
     },
     computed: {
         /** It makes an array with a length equal to maxPerView */
@@ -27,6 +27,9 @@ export default {
             let array = []
             array.length = this.maxPerView
             return array
+        },
+        isLastBlock() {
+            return this.block === Math.trunc(this.lastIndex / this.maxPerView )
         }
     },
     methods: {

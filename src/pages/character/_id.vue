@@ -1,22 +1,28 @@
 <template lang="">
-    <div style="color: white; font-size: 72px">
-        {{this.currentCharacter}}
+    <div v-if="!isLoading" class="d-flex" style="color: white; font-size: 72px">
+        <img :src="this.currentCharacter.image"/>
+        <img :src="this.currentCharacter.image"/>
     </div>
+    <Loading v-else />
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
+import { Loading } from '@/components'
 
 export default {
+    comments: { Loading },
     computed: {
         ...mapState('character', ['currentCharacter'])
     },
     methods: {
-        ...mapActions('character', ['getCharacter'])
+        ...mapActions('character', ['getCharacter']),
+        ...mapMutations(['setIsLoading'])
     },
     async created() {
         if (!this.currentCharacter.id){
-            console.log(this.$route.params.id)
+            this.setIsLoading(true)
             await this.getCharacter(this.$route.params.id)
+            this.setIsLoading(false)
         }
     }
 }

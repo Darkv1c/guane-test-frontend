@@ -4,7 +4,8 @@
     <div class="d-flex flex-1">
       <card-list class="index-card-list"/>
     </div>
-    <pagination :pages="characterList.info?.pages" @onClick="()=>loadPage(routePage)"/>
+    <pagination @onClick="()=>loadPage(routePage)" 
+      :lastIndex="lastIndex"/>
   </div>
 </template>
 
@@ -21,7 +22,7 @@ export default {
     async loadPage(page) {
       //if ([this.objectPage, this.objectPage - 1].includes( this.routePage )) return
       store.commit("setIsLoading", true)
-      await this.getCharacterList(page)
+      await this.getCharacterList(Math.ceil(page/2))
       store.commit("setIsLoading", false)
     }
   },
@@ -32,10 +33,13 @@ export default {
     },
     objectPage() {
       return this.characterList.info?.page * 2
-    }
+    },
+    lastIndex(){
+      return this.characterList.info?.pages * 2
+    } 
   },
   async created() {
-    this.loadPage(this.$route.query.page || 1)
+    await this.loadPage(this.$route.query.page || 1)    
   }
 };
 </script>
