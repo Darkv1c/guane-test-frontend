@@ -19,7 +19,7 @@ export default {
     ...mapActions('character', ['getCharacterList']),
     /** It loads the page when it's different to the saved in the state */
     async loadPage(page) {
-      if ([this.objectPage, this.objectPage - 1].includes( this.routePage )) return
+      //if ([this.objectPage, this.objectPage - 1].includes( this.routePage )) return
       store.commit("setIsLoading", true)
       await this.getCharacterList(page)
       store.commit("setIsLoading", false)

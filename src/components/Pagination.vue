@@ -1,9 +1,11 @@
 <template >
     <div class="pagination-container">
-        <span v-for="(page, n) of paginationArray" v-bind:key="'pagination' + n" @click="() => goToPage(n+1)"
+        <span @click="goToPreviousBlock"> back </span>
+        <span v-for="(page, n) of paginationArray" v-bind:key="'pagination' + n" @click="() => goToPage(maxPerView * block + n + 1)"
             class="c-pointer">
             {{maxPerView * block + n + 1}} &nbsp;
         </span>
+        <span @click="goToNextBlock" > foward </span>
     </div>
 </template>
 <script>
@@ -29,11 +31,23 @@ export default {
     },
     methods: {
         /** It passes by query the page to go */
-        goToPage(page) {
-            this.$router.push(this.$route.path + '?page=' + page)
+        async goToPage(page) {
+            await this.$router.push(this.$route.path + '?page=' + page)
             /** something to do on click */
             this.$emit("onClick")
+        },
+        /** It shows previous indexes */
+        goToPreviousBlock() {
+            this.block -= 1
+        },
+        /** It shows next indexes */
+        goToNextBlock() {
+            this.block += 1
         }
+    },
+    created(){
+        let page = this.$route.query.page || 1
+        this.block = Math.trunc(page / this.maxPerView )
     }
 }
 </script>
@@ -46,5 +60,6 @@ export default {
     .pagination-container {
         display: flex;
         font-size: 25px;
+        justify-content: center;
     }
 </style>
