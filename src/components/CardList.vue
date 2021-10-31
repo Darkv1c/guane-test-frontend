@@ -14,8 +14,13 @@ export default {
         ...mapState('character', ['characterList']),
         ...mapState(['currentPage']),
         results(){
-            return this.currentPage % 2 ? this.characterList.results.slice(0, 10) : 
-            this.characterList.results.slice(10, 20)
+            if (this.characterList.results){
+                return this.currentPage % 2 ? this.characterList.results.slice(0, 10) : 
+                this.characterList.results.slice(10, 20)
+            }
+            else {
+                return []
+            }
         }
     }
 }

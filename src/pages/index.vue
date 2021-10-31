@@ -4,7 +4,7 @@
     <div class="d-flex flex-1">
       <card-list class="index-card-list"/>
     </div>
-    <pagination/>
+    <pagination :pages="characterList.info?.pages" @onClick="()=>loadPage(routePage)"/>
   </div>
 </template>
 
@@ -16,16 +16,26 @@ import { Pagination, CardList, Header } from '@/components';
 export default {
   components: { Pagination, CardList, Header },
   methods: {
-    ...mapActions('character', ['getCharacterList'])
+    ...mapActions('character', ['getCharacterList']),
+    /** It loads the page when it's different to the saved in the state */
+    async loadPage(page) {
+      if ([this.objectPage, this.objectPage - 1].includes( this.routePage )) return
+      store.commit("setIsLoading", true)
+      await this.getCharacterList(page)
+      store.commit("setIsLoading", false)
+    }
   },
   computed: {
     ...mapState('character', ['characterList']),
-    ...mapState(['currentPage'])
+    routePage() {
+      return this.$route.query.page
+    },
+    objectPage() {
+      return this.characterList.info?.page * 2
+    }
   },
   async created() {
-    store.commit("setIsLoading", true)
-    await this.getCharacterList(this.currentPage)
-    store.commit("setIsLoading", false)
+    this.loadPage(this.$route.query.page || 1)
   }
 };
 </script>
@@ -38,6 +48,6 @@ export default {
     min-height: 70vh;
     margin: auto;
     box-sizing: border-box;
-    padding: 4% 10% 2% 10%;
+    padding: 2% 5% 2% 5%;
   }
 </style>
