@@ -1,16 +1,19 @@
 <template lang="">
-    <div v-if="!isLoading" class="d-flex" style="color: white; font-size: 72px">
-        <img :src="this.currentCharacter.image"/>
-        <img :src="this.currentCharacter.image"/>
+    <div class="d-flex">
+    <Header />
+        <div v-if="!isLoading" class="container">    
+            <img :src="this.currentCharacter.image" style="width: 500px"/>
+            <span></span>
+        </div>
+        <Loading v-else />
     </div>
-    <Loading v-else />
 </template>
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex'
-import { Loading } from '@/components'
+import { Loading, Header } from '@/components'
 
 export default {
-    comments: { Loading },
+    components: { Loading, Header },
     computed: {
         ...mapState('character', ['currentCharacter'])
     },

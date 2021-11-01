@@ -15,6 +15,22 @@ body {
   font-weight: 600;
 }
 
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(var(--clr-black), 0.5);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(var(--clr-green), 0.8);
+        border-radius: 50px;
+        &:hover{
+          background-color: rgba(var(--clr-green), 1);
+        }
+    }
+
 //variables
 :root{
   //colors
@@ -46,6 +62,10 @@ body {
   cursor: pointer;
 }
 
+.container{
+  box-sizing: border-box;
+  padding: 2%
+}
 .neon-text{  
   color: transparent;
   -webkit-text-stroke: 1.5px rgb(var(--clr-green));
