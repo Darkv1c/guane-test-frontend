@@ -1,6 +1,6 @@
 <template lang="">
     <div class="d-flex">
-    <Header />
+    <Header onGoBack="/" />
         <div v-if="!isLoading" class="container">    
             <img :src="this.currentCharacter.image" style="width: 500px"/>
             <span></span>

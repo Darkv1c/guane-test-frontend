@@ -5,7 +5,6 @@
 </template>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 //default
 body {
@@ -20,7 +19,7 @@ body {
     }
     
     ::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(var(--clr-black), 0.5);
+      box-shadow: inset 0 0 6px rgba(var(--clr-black), 0.5);
     }
     
     ::-webkit-scrollbar-thumb {
@@ -36,6 +35,9 @@ body {
   //colors
   --clr-green: 107, 254, 68;
   --clr-black: 27, 32, 26;
+
+  //fonts
+  --font-size-m: 25px
 }
 
 #app {
@@ -69,6 +71,7 @@ body {
 .neon-text{  
   color: transparent;
   -webkit-text-stroke: 1.5px rgb(var(--clr-green));
+  letter-spacing: 2px;
 }
 
 </style>

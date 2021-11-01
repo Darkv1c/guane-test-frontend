@@ -57,12 +57,11 @@ export default {
 <style lang="scss" scoped>
     .pagination-container {        
         background: rgba(var(--clr-black), 0.8);
-        font-weight: 800;
-        font-size: 30opx;
         font-family: 'Courier New', Courier, monospace;
+        font-weight: 800;
+        font-size: var(--font-size-m);
         height: 100px;
         display: flex;
-        font-size: 25px;
         justify-content: center;
         box-sizing: border-box;
         padding: 10px;

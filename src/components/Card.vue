@@ -39,7 +39,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     .card-container{
         max-width: 250px;
         max-height: 250px;
