@@ -1,6 +1,6 @@
 <template lang="">
     <div class="d-flex">
-    <Header onGoBack="/" />
+        <Header :onGoBack="`/`" />
         <div v-if="!isLoading" class="container">    
             <img :src="this.currentCharacter.image" style="width: 500px"/>
             <span></span>
@@ -11,6 +11,7 @@
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex'
 import { Loading, Header } from '@/components'
+import { character } from '@/store/modules/character'
 
 export default {
     components: { Loading, Header },
@@ -18,7 +19,7 @@ export default {
         ...mapState('character', ['currentCharacter'])
     },
     methods: {
-        ...mapActions('character', ['getCharacter']),
+        ...mapActions('character', ['getCharacter', 'characterList']),
         ...mapMutations(['setIsLoading'])
     },
     async created() {

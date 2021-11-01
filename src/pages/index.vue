@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex index-container">
-    <Header title="Rick & Morty" :onGoBack="'11'"/>
+    <Header title="Rick & Morty" />
     <div class="d-flex flex-1">
       <card-list class="index-card-list"/>
     </div>

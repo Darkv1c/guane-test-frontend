@@ -13,10 +13,10 @@ export default {
     components: { Card, Loading },
     computed: {
         ...mapState('character', ['characterList']),
-        ...mapState(['currentPage', 'isLoading']),
+        ...mapState(['isLoading']),
         results(){
             if (this.characterList.results){
-                return this.currentPage % 2 ? this.characterList.results.slice(0, 10) : 
+                return this.$route.query.page % 2 ? this.characterList.results.slice(0, 10) : 
                 this.characterList.results.slice(10, 20)
             }
             else {

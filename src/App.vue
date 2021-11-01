@@ -74,4 +74,30 @@ body {
   letter-spacing: 2px;
 }
 
+//Animation
+    @keyframes distortion {
+        0% {
+            transform: skew(90deg, 90deg);
+            -webkit-text-stroke: 1.5px rgb(var(--clr-green));
+        }
+        25%{
+          transform: skew(0deg, 0deg);
+            color: lightskyblue;
+            -webkit-text-stroke: 1.5px violet;
+        }
+        50% {
+            transform: skew(-90deg, -90deg);
+            color: lightskyblue;
+            -webkit-text-stroke: 1.5px rgb(var(--clr-green));
+        }
+        75%{
+            transform: skew(10deg, 10deg);
+            color: lightskyblue;
+            -webkit-text-stroke: 1.5px violet;
+        }
+        100%{
+            transform: skew(0deg);
+            -webkit-text-stroke: 1.5px rgb(var(--clr-green));
+        }
+    }
 </style>
