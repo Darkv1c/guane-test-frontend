@@ -64,7 +64,7 @@ body {
 
 .container{
   box-sizing: border-box;
-  padding: 2%
+  padding: 2% 4%
 }
 .neon-text{  
   color: transparent;

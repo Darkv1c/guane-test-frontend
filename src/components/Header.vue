@@ -10,8 +10,8 @@ export default {
 </script>
 <style lang="scss" scoped>
     div {
-        background: white;
+        background: rgb(var(--clr-black));
         opacity: 0.5;
-        height: 80px;
+        height: 100px;
     }
 </style>
