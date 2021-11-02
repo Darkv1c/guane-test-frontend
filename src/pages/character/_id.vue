@@ -11,7 +11,6 @@
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex'
 import { Loading, Header } from '@/components'
-import { character } from '@/store/modules/character'
 
 export default {
     components: { Loading, Header },

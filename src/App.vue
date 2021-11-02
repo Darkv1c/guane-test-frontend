@@ -33,7 +33,7 @@ body {
 //variables
 :root{
   //colors
-  --clr-green: 107, 254, 68;
+  --clr-green: 122, 253, 77;
   --clr-black: 27, 32, 26;
 
   //fonts
@@ -45,7 +45,7 @@ body {
   min-height: 100vh;
   background-image: url('./assets/background.png');
   background-position: 50% 50%;
-  background-size: 100%, 100%;
+  background-size: cover;
   display: flex;
   flex-direction: column;
 }
@@ -70,7 +70,7 @@ body {
 }
 .neon-text{  
   color: transparent;
-  -webkit-text-stroke: 1.5px rgb(var(--clr-green));
+  -webkit-text-stroke: 1.5px rgba(var(--clr-green));
   letter-spacing: 2px;
 }
 
@@ -78,7 +78,7 @@ body {
     @keyframes distortion {
         0% {
             transform: skew(90deg, 90deg);
-            -webkit-text-stroke: 1.5px rgb(var(--clr-green));
+            -webkit-text-stroke: 1.5px rgba(var(--clr-green), 1);
         }
         25%{
           transform: skew(0deg, 0deg);

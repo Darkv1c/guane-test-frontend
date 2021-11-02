@@ -77,7 +77,7 @@ export default {
         @for $i from 0 to 10 {
             &:hover > .card-sub-container-#{$i} {
                 transform: rotatey(180deg);
-                transition: all .5s ease-in-out 0s;
+                transition: all .5s ease-in-out 0s;                
             }
         }
     }

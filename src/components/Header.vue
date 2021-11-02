@@ -49,14 +49,37 @@ export default {
         font-weight: 800;
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
+        position: relative;
         .header-title{
             pointer-events: none;
             margin: auto;
             font-size: 50px;
+            font-weight: 800;
         }
         span{
             display: flex;
             align-items: center;
+        }
+        &::after{
+            content: '';
+            display: block;
+            min-width: 100%;
+            min-height: 5px;
+            animation: loading 3s alternate infinite forwards;
+            position: absolute;
+            bottom: 0;
+        }
+    }
+
+    @keyframes loading {
+        $i: 0;
+        $step: .01;
+
+        @while ($i * 100) <= 100 {
+            #{$i*100 + "%"} {
+                background: linear-gradient(to right, rgba(var(--clr-green), 1 - $i), rgba(var(--clr-green), $i), rgba(var(--clr-green), 1 - $i))
+            }
+            $i: $i + $step
         }
     }
 </style>

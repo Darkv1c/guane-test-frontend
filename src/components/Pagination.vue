@@ -67,10 +67,32 @@ export default {
         padding: 10px;
         max-width: 100vw;
         overflow: hidden;
-        .pag-index{
+        position: relative;
+        .pag-index{            
             padding: 3px;
-            margin: 0px 3px;
+            margin: 5px 3px;
             animation: distortion .1s 0s forwards;
+        }
+        &::before{
+            content: '';
+            background: beige;
+            position: absolute;
+            top: 0;
+            min-width: 100%;
+            min-height: 5px;
+            animation: loading 3s alternate infinite forwards;
+        }
+    }
+
+        @keyframes loading {
+        $i: 0;
+        $step: .01;
+
+        @while ($i * 100) <= 100 {
+            #{$i*100 + "%"} {
+                background: linear-gradient(to right, rgba(var(--clr-green), 1 - $i), rgba(var(--clr-green), $i), rgba(var(--clr-green), 1 - $i))
+            }
+            $i: $i + $step
         }
     }
 </style>
