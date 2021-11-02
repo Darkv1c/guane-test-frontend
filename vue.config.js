@@ -4,4 +4,11 @@ module.exports = {
       chunkNamePrefix: "page-",
     },
   },
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `@import "@/_variables.scss";`
+      }
+    }
+  }
 };

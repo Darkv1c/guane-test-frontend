@@ -2,8 +2,11 @@
     <div class="d-flex">
         <Header :onGoBack="`/`" />
         <div v-if="!isLoading" class="container">    
-            <img :src="this.currentCharacter.image" style="width: 500px"/>
-            <span></span>
+            <img :src="this.currentCharacter.image"/>
+            <div class="neon-text details-text">
+                lorejdashjk dsajfhsjkdhjlh hdasufhhoasdiufh as dfhuihskjh dsfuh hjad fp dsajfhsjkdhjlhadsfasdf
+                asdfsdfsdfadsfasdfasdfasdfasdf
+            </div>
         </div>
         <Loading v-else />
     </div>
@@ -30,6 +33,17 @@ export default {
     }
 }
 </script>
-<style lang="">
-    
+<style lang="scss" scoped>
+    .container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    img{
+        width: 30%;
+        min-width: 500px;
+    }
+    .details-text {
+        min-width: 600px;
+    }
 </style>

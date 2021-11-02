@@ -55,6 +55,7 @@ export default {
             margin: auto;
             font-size: 50px;
             font-weight: 800;
+            max-height: 100%;
         }
         span{
             display: flex;

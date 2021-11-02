@@ -49,7 +49,6 @@ export default {
         margin: 12px;
         aspect-ratio: 1/1;
         flex: 0 1 25%;
-        animation: distortion .1s 0s forwards;
         .card-sub-container{
             background-size: cover;
             transition: all .5s ease-in-out 0s;
@@ -94,6 +93,12 @@ export default {
                 rgba(var(--clr-black), $base + ($range -  $range * $i)) 5%);
             }
             $i: $i + 0.01
+        }
+    }
+
+    @media screen and (max-width: $phone) {
+        .card-container{
+            min-width: 100%;
         }
     }
 </style>
