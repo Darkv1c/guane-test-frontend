@@ -12,15 +12,27 @@ export default {
 <style lang="scss" scoped>
     .loading-text{
         position: absolute; 
-        color: white; 
-        font-size: 75px;
+        color: white;
+        font-size: 40px;
     }
     .loading-container{
         flex-direction: row !important;
-        max-width: 70vh;
-        min-width: 70vh;
-        aspect-ratio: 1/1;
+        max-width: 100vw;
+        min-width: 100vw;
+        max-height: 100vh;
+        min-height: 100vh;
+        pointer-events: none;
         justify-content: center;
         align-items: center;
+        position: fixed;
+        img{
+            width: 50%;
+            position: relative;
+        }
+    }
+    @media screen and (max-width: $phone) {
+        .loading-text{
+            display: none;
+        }
     }
 </style>

@@ -1,6 +1,5 @@
 import {Commit} from 'vuex'
 import axios from 'axios'
-axios.defaults.baseURL = "https://rickandmortyapi.com/api/character"
 
 type iState = {
     characterList: [],
@@ -12,7 +11,7 @@ const state:iState = {
     currentCharacter: {}
 }
 
-export const character = {
+export default {
     namespaced: true,
     state,
     mutations: {
@@ -25,7 +24,7 @@ export const character = {
     },
     actions: {
         async getCharacterList( {commit}:{commit:Commit}, page:number ) {
-            await axios.get('/?page=' + page)
+            await axios.get('/character/?page=' + page)
             .then(response => commit('setCharacterList', response.data))
             .catch(error => {
                 commit('setCharacterList', [])
@@ -33,7 +32,7 @@ export const character = {
             })
         },
         async getCharacter( {commit}:{commit:Commit}, id:number ) {
-            await axios.get('/' + id)
+            await axios.get('/character/' + id)
             .then(response => commit('setCurrentCharacter', response.data))
             .catch(error => {
                 commit('setCurrentCharacter', {})

@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
-import { character } from "./modules/character";
-
+import { character, episode } from "./modules";
+import axios from 'axios'
+axios.defaults.baseURL = "https://rickandmortyapi.com/api"
 
 export default createStore({
   state: {
@@ -16,6 +17,7 @@ export default createStore({
     }
   },
   modules: {
-    character
+    character,
+    episode
   },
 });

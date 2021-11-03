@@ -98,7 +98,7 @@ export default {
 
     @media screen and (max-width: $phone) {
         .pagination-container{
-            max-height: 60px;
+            max-height: var(--font-size-l);
         }
     }
 </style>

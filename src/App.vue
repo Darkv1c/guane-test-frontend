@@ -36,7 +36,8 @@ body {
   --clr-black: 27, 32, 26;
 
   //fonts
-  --font-size-m: 25px
+  --font-size-m: 25px;
+  --font-size-l: 60px;
 }
 
 #app {

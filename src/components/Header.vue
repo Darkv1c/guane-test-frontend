@@ -86,5 +86,10 @@ export default {
 
     //media querys
     @media screen and (max-width: $phone) {
+        .header-container{
+            grid-template-columns: 1fr 0fr 1fr;
+            max-height: 60px;
+            position: sticky;
+        }
     }
 </style>
