@@ -1,7 +1,7 @@
 <template >
     <div class="header-container neon-text">
         <div>
-            <span v-if="onGoBack" @click="onGoBackClick" class="c-pointer">
+            <span v-if="onGoBack" @click="onGoBackClick" class="c-pointer go-back">
                 <span class="material-icons-outlined" style="font-size: 40px">
                     chevron_left
                 </span>
@@ -71,7 +71,7 @@ export default {
             bottom: 0;
         }
     }
-
+    //animations
     @keyframes loading {
         $i: 0;
         $step: .01;
@@ -82,5 +82,9 @@ export default {
             }
             $i: $i + $step
         }
+    }
+
+    //media querys
+    @media screen and (max-width: $phone) {
     }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex index-container">
-    <Header title="Rick & Morty" />
+    <Header title="Rick & Morty" class="index-header"/>
     <div class="d-flex flex-1">
       <card-list class="index-card-list"/>
     </div>
@@ -53,5 +53,16 @@ export default {
     margin: auto;
     box-sizing: border-box;
     padding: 2% 5% 2% 5%;
+  }
+
+  @media screen and (max-width: $phone) {
+    .index-card-list{
+      padding: 0;
+      margin: 0;
+      max-height: calc(100vh - 60px);
+    }
+    .index-header{
+      display: none;
+    }
   }
 </style>

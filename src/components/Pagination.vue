@@ -95,4 +95,10 @@ export default {
             $i: $i + $step
         }
     }
+
+    @media screen and (max-width: $phone) {
+        .pagination-container{
+            max-height: 60px;
+        }
+    }
 </style>

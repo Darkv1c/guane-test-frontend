@@ -1,5 +1,5 @@
 <template lang="">
-    <div :class="'card-container c-pointer'"
+    <div :class="'card-container c-pointer card-container-' + identifier"
         @mouseover="()=>setShowText(true)" @mouseleave="()=>setShowText(false)" @click="goToDetails">
         <div :class="'card-sub-container neon-text card-sub-container-' + identifier" :style="`background-image: url('${object.image}')`">
             <div v-show="showText" class="card-text-container d-flex">
@@ -98,7 +98,42 @@ export default {
 
     @media screen and (max-width: $phone) {
         .card-container{
+            display: flex;
             min-width: 100%;
+            margin: 0;
+            background: rgba(var(--clr-black), 0.5);
+            max-height: 30px;
+            border-radius: 0;
+            position: relative;
+            .card-sub-container{
+                border-radius: 0;
+                max-height: 100%;
+                min-width: 0%;
+                aspect-ratio: 1/1;
+                position: static;
+                .card-text-container{
+                    position: absolute;
+                    max-height: 100%;
+                    display: flex !important;
+                    justify-content: center;
+                    left: 0;
+                    transform: rotateY(0deg);
+                    border-radius: 0;
+                    animation: none;
+                    background: transparent;
+                    max-width: 50%;
+                }
+            }
+        }
+        @for $i from 0 to 10 {
+            .card-container-#{$i} {
+                @if ($i%2==1) {
+                    flex-direction: row-reverse;
+                } @else {
+                    background: rgba(white, 0.3);
+                    text-align: end;;
+                }          
+            }
         }
     }
 </style>
