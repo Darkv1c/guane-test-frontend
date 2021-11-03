@@ -124,7 +124,9 @@ export default {
                     border-radius: 0;
                     animation: none;
                     background: transparent;
-                    max-width: 50%;
+                    span{
+                        max-width: 50%;
+                    }
                 }
             }
         }
@@ -134,7 +136,10 @@ export default {
                     flex-direction: row-reverse;
                 } @else {
                     background: rgba(white, 0.3);
-                    text-align: end;;
+                    text-align: end;
+                    .card-text-container{
+                        align-items: flex-end;
+                    }
                 }          
             }
         }
