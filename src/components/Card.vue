@@ -111,6 +111,9 @@ export default {
                 min-width: 0%;
                 aspect-ratio: 1/1;
                 position: static;
+                &:hover{
+                    transform: none;
+                }
                 .card-text-container{
                     position: absolute;
                     max-height: 100%;
